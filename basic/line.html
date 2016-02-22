@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>canvas basic</title>
+</head>
+<body>
+  <!-- 当浏览器中不支持canvas时，则显示标签中的内容；当支持时，忽略标签中内容 -->
+  <canvas id="canvas" style="border:1px solid #aaa; margin: 0 auto;display:block;">
+    当前浏览器不支持canvas，请升级浏览器后重试！
+  </canvas>
+
+  <script type="text/javascript">
+    window.onload = function() {
+      //取得canvas对象和context环境
+      var canvas = document.getElementById('canvas');
+      var context = canvas.getContext('2d');
+
+      //设置canvas的宽度和高度
+      canvas.width = 600;
+      canvas.height = 400;
+
+      /*绘制直线
+      * canvas是基于状态的，也就是先确定状态，然后在进行绘制
+      * 每开始一个图形，需要先将转态描述出来，并用beginPath()和closePath()包裹，否则状态会叠加
+      * beginPath()和closePath()一起用时，会自动将起点和终点进行连接，如果只使用一个，则不会封闭
+      */
+      //状态
+      context.beginPath();
+      context.moveTo(200, 200);
+      context.lineTo(300, 300);
+      context.closePath();
+
+      //绘制
+      context.lineWidth = 5; //设置线条宽度
+      context.strokeStyle = "#red"; //设置线条的样式
+      context.stroke();
+
+      /*绘制多边形
+      * canvas是基于状态的，也就是先确定状态，然后在进行绘制
+      * 每开始一个图形，需要先将转态描述出来，并用beginPath()和closePath()包裹，否则状态会叠加
+      */
+      //状态
+      context.beginPath();
+      context.moveTo(50, 50);
+      context.lineTo(100, 50);
+      context.lineTo(100, 100);
+      context.lineTo(50,100);
+      context.closePath();
+
+      //绘制
+      context.fillStyle = "#0033aa";
+      context.fill();
+    }
+
+
+
+  </script>
+</body>
+</html>

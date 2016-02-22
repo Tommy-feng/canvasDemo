@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>canvasDemo</title>
+</head>
+<body>
+  <canvas id="canvas" style="display:block;margin:0 auto;border:1px solid #aaa;">
+    您的浏览器尚不支持canvas
+  </canvas>
+
+  <script type="text/javascript">
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var image = new Image();
+
+    window.onload = function() {
+      canvas.width = 800;
+      canvas.height = 500;
+
+      image.src = "demo.jpg";
+      image.onload = function() {
+        //ctx.drawImage(image, dx, dy);
+        //context.drawImage(image, 50, 50);
+
+        //ctx.drawImage(image, dx, dy, dWidth, dHeight);
+        //context.drawImage(image, 0, 0, canvas.width, canvas.height);
+        //context.drawImage(image, 0, 0, 300, 200);
+
+        //ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+        context.drawImage(image, 50, 50, 800, 500, 20, 20, canvas.width, canvas.height);
+      }
+    }
+  </script>
+</body>
+</html>

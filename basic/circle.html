@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>canvas basic</title>
+</head>
+<body>
+  <!-- 当浏览器中不支持canvas时，则显示标签中的内容；当支持时，忽略标签中内容 -->
+  <canvas id="canvas" style="border:1px solid #aaa; margin: 0 auto;display:block;">
+    当前浏览器不支持canvas，请升级浏览器后重试！
+  </canvas>
+
+  <script type="text/javascript">
+  window.onload = function() {
+    //取得canvas对象和context环境
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+    //设置canvas的宽度和高度
+    canvas.width = 650;
+    canvas.height = 600;
+
+    /*ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);
+    *x, y为圆心的坐标；startAngle为初始角度；endAngle为结束角度；anticlockwise为绘制方向（false为顺时针，true为逆时针，默认顺时针）
+    */
+
+    for (var i = 0; i<6; i++) {
+      context.beginPath();
+      context.moveTo(60+i*100, 60);
+      context.arc(60+i*100, 60, 40, 0, 0.25*(1+i*Math.PI));
+      context.closePath();
+      context.stroke();
+    }
+
+    for (var i = 0; i<6; i++) {
+      context.beginPath();
+      context.moveTo(100+i*100, 180);
+      context.arc(60+i*100, 180, 40, 0, 0.25*(1+i*Math.PI));
+      context.stroke();
+    }
+
+    for (var i = 0; i<6; i++) {
+      context.beginPath();
+      context.moveTo(100+i*100, 300);
+      context.arc(60+i*100, 300, 40, 0, 0.25*(1+i*Math.PI));
+      context.fillStyle = "#224433";
+      context.fill();
+    }
+  }
+
+  </script>
+</body>
+</html>

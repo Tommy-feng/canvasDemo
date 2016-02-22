@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>canvasDemo</title>
+</head>
+<body>
+  <canvas id="canvas" style="display:block;margin:0 auto;border:1px solid #aaa;">
+    您的浏览器尚不支持canvas
+  </canvas>
+
+  <script type="text/javascript">
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var image = new Image();
+    var isMouseDown = false;
+
+    window.onload = function() {
+      canvas.width = 800;
+      canvas.height = 500;
+
+      image.src = "demo.jpg";
+      image.onload = function() {
+        context.drawImage(image, 0, 0, canvas.width, canvas.height);
+      }
+
+      function windowToCanvas(element, x, y) {
+        var _bbox = element.getBoundingClientRect();
+        return {x: x-_bbox.left, y: y-_bbox.top};
+      }
+
+      canvas.onmousedown = function(e) {
+        e.preventDefault();
+        isMouseDown = true;
+      };
+
+      canvas.onmouseup = function(e) {
+        e.preventDefault();
+        isMouseDown = false;
+      };
+
+      canvas.onmousemove = function(e) {
+        e.preventDefault();
+        if (isMouseDown == true) {
+          var point = windowToCanvas(canvas, e.clientX, e.clientY);
+          console.log(point.x, point.y);
+        }
+      };
+
+      canvas.onmouseout = function(e) {
+        e.preventDefault();
+        isMouseDown = false;
+      };
+    }
+  </script>
+</body>
+</html>

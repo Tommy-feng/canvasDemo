@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>canvas basic</title>
+</head>
+<body>
+  <!-- 当浏览器中不支持canvas时，则显示标签中的内容；当支持时，忽略标签中内容 -->
+  <canvas id="canvas" style="border:1px solid #aaa; margin: 0 auto;display:block;">
+    当前浏览器不支持canvas，请升级浏览器后重试！
+  </canvas>
+
+  <script type="text/javascript">
+    window.onload = function() {
+      //取得canvas对象和context环境
+      var canvas = document.getElementById('canvas');
+      var context = canvas.getContext('2d');
+
+      //设置canvas的宽度和高度
+      canvas.width = 600;
+      canvas.height = 400;
+    }
+
+  </script>
+</body>
+</html>
